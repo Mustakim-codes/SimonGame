@@ -76,7 +76,7 @@
 
     let h2 = document.querySelector("#msg");
     function startGame(e) {
-        // ❗ prevent button click from triggering restart
+        
         if (e && e.target.classList.contains("btn")) return;
 
         if (!started) {
@@ -86,24 +86,22 @@
         }
     }
 
-    // START EVENTS
+    
     document.addEventListener("keypress", startGame);
     document.addEventListener("click", startGame);
     document.addEventListener("touchstart", startGame);
 
-    // GAME FLASH
     function gameFlash(btn) {
         btn.classList.add("flash");
         setTimeout(() => btn.classList.remove("flash"), 250);
     }
 
-    // USER FLASH
+   
     function userFlash(btn) {
         btn.classList.add("userflash");
         setTimeout(() => btn.classList.remove("userflash"), 250);
     }
 
-    // LEVEL UP
     function levelUp() {
         userSeq = [];
         level++;
@@ -119,7 +117,6 @@
         gameFlash(randBtn);
     }
 
-    // CHECK ANSWER
     function checkAns(idx) { 
         if (userSeq[idx] === gameSeq[idx]) {
             if (userSeq.length == gameSeq.length) {
@@ -143,7 +140,6 @@
         }
     }
 
-    // BUTTON PRESS
     function btnPress() {
         if (!started) return;
 
@@ -157,14 +153,12 @@
         checkAns(userSeq.length - 1);
     }
 
-    // ADD CLICK EVENTS
     let allBtns = document.querySelectorAll(".btn");
 
     for (let btn of allBtns) {
         btn.addEventListener("click", btnPress);
     }
 
-    // RESET
     function reset() {
         gameSeq = [];
         userSeq = [];
